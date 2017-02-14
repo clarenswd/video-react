@@ -5,6 +5,8 @@ import LoadProgressBar from './LoadProgressBar';
 import MouseTimeDisplay from './MouseTimeDisplay';
 import { formatTime } from '../../utils';
 
+import Marker from './Marker';
+
 const propTypes = {
   player: PropTypes.object,
   mouseTime: PropTypes.object,
@@ -92,6 +94,21 @@ export default class SeekBar extends Component {
     const { player: { currentTime, seekingTime, duration, buffered }, mouseTime } = this.props;
     const time = seekingTime || currentTime;
 
+    let markers = [
+        {seconds:3, duration:52 , topic : "autopilot"},
+        {seconds:9, duration:52 , topic : "sensors"},
+        {seconds:13, duration:52, topic : "music"},
+        {seconds:52, duration:52, topic : "comfort"},
+
+    ];
+
+    const markerComponents =[];
+     
+    markers.forEach(function (marker, i ) {
+            markerComponents.push(<Marker key={i} seconds={marker.seconds} videoDuration = { marker.duration } />);
+    });
+     
+
     return (
       <Slider
         ref={(input) => {
@@ -121,6 +138,9 @@ export default class SeekBar extends Component {
           currentTime={time}
           duration={duration}
         />
+
+        {markerComponents}
+
       </Slider>
     );
   }
