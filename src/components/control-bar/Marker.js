@@ -10,7 +10,7 @@ class Marker extends Component {
 	}
 
 	componentDidMount() {
-		alert(this.props.videoDuration);
+		 
 		var offset = (this.props.seconds/this.props.videoDuration)
 	  	this.setState({ offset: offset * 100 });
 	  	console.log(this.props.seconds);
@@ -26,7 +26,7 @@ class Marker extends Component {
 		      position:'absolute',
 		      left: this.state.offset+'%', 
 	    };
-		return (<div className="clarensMarker" style={style}></div>);
+		return (<div className="clarensMarker" style={style} onClick={this.props.toggleChat}></div>);
 
 	}
 }

@@ -26,6 +26,10 @@ export default class SeekBar extends Component {
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
+
+
+    this.toggleChat = this.toggleChat.bind(this);
+
   }
 
   componentDidMount() {
@@ -89,8 +93,13 @@ export default class SeekBar extends Component {
     const { actions } = this.props;
     actions.replay(5);
   }
+  toggleChat(){
+    alert("toggleChat");
+
+  }
 
   render() {
+    let react_this  = this;
     const { player: { currentTime, seekingTime, duration, buffered }, mouseTime } = this.props;
     const time = seekingTime || currentTime;
 
@@ -105,7 +114,7 @@ export default class SeekBar extends Component {
     const markerComponents =[];
      
     markers.forEach(function (marker, i ) {
-            markerComponents.push(<Marker key={i} seconds={marker.seconds} videoDuration = { marker.duration } />);
+      markerComponents.push(<Marker key={i} seconds={marker.seconds} videoDuration = { marker.duration } toggleChat={ react_this.toggleChat}/>);
     });
      
 
