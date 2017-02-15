@@ -31,6 +31,9 @@ const propTypes = {
   autoPlay: PropTypes.bool,
   src: PropTypes.string,
   poster: PropTypes.string,
+
+  markers: PropTypes.array,
+
   preload: React.PropTypes.oneOf(['auto', 'metadata', 'none']),
 
   onLoadStart: PropTypes.func,
@@ -55,11 +58,20 @@ const propTypes = {
   onTimeUpdate: PropTypes.func,
   onRateChange: PropTypes.func,
   onVolumeChange: PropTypes.func,
+
+
 };
 
 const defaultProps = {
   fluid: true,
-  aspectRatio: 'auto'
+  aspectRatio: 'auto', 
+  markers:[
+    {seconds:3, duration:52 , topic : "autopilot"},
+    {seconds:9, duration:52 , topic : "sensors"},
+    {seconds:13, duration:52, topic : "music"},
+    {seconds:45, duration:52, topic : "comfort"},
+  ]
+
 };
 
 

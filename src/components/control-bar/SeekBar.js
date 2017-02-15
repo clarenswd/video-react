@@ -11,6 +11,7 @@ const propTypes = {
   player: PropTypes.object,
   mouseTime: PropTypes.object,
   actions: PropTypes.object,
+  markers: PropTypes.array
 };
 
 export default class SeekBar extends Component {
@@ -103,13 +104,7 @@ export default class SeekBar extends Component {
     const { player: { currentTime, seekingTime, duration, buffered }, mouseTime } = this.props;
     const time = seekingTime || currentTime;
 
-    let markers = [
-        {seconds:3, duration:52 , topic : "autopilot"},
-        {seconds:9, duration:52 , topic : "sensors"},
-        {seconds:13, duration:52, topic : "music"},
-        {seconds:52, duration:52, topic : "comfort"},
-
-    ];
+    let markers = this.props.markers;
 
     const markerComponents =[];
      
