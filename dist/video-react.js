@@ -3615,7 +3615,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var propTypes = {
 	  player: _react.PropTypes.object,
 	  mouseTime: _react.PropTypes.object,
-	  actions: _react.PropTypes.object
+	  actions: _react.PropTypes.object,
+	  markers: _react.PropTypes.array
 	};
 	
 	var SeekBar = function (_Component) {
@@ -3743,7 +3744,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      var time = seekingTime || currentTime;
 	
-	      var markers = [{ seconds: 3, duration: 52, topic: "autopilot" }, { seconds: 9, duration: 52, topic: "sensors" }, { seconds: 13, duration: 52, topic: "music" }, { seconds: 52, duration: 52, topic: "comfort" }];
+	      var markers = this.props.markers;
 	
 	      var markerComponents = [];
 	
@@ -4904,6 +4905,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  autoPlay: _react.PropTypes.bool,
 	  src: _react.PropTypes.string,
 	  poster: _react.PropTypes.string,
+	
+	  markers: _react.PropTypes.array,
+	
 	  preload: _react2.default.PropTypes.oneOf(['auto', 'metadata', 'none']),
 	
 	  onLoadStart: _react.PropTypes.func,
@@ -4928,11 +4932,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onTimeUpdate: _react.PropTypes.func,
 	  onRateChange: _react.PropTypes.func,
 	  onVolumeChange: _react.PropTypes.func
+	
 	};
 	
 	var defaultProps = {
 	  fluid: true,
-	  aspectRatio: 'auto'
+	  aspectRatio: 'auto',
+	  markers: [{ seconds: 3, duration: 52, topic: "autopilot" }, { seconds: 9, duration: 52, topic: "sensors" }, { seconds: 13, duration: 52, topic: "music" }, { seconds: 45, duration: 52, topic: "comfort" }]
+	
 	};
 	
 	var Player = function (_Component) {
