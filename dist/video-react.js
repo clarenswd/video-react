@@ -1851,8 +1851,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -2520,7 +2518,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      return _react2.default.createElement(
 	        'video',
-	        _defineProperty({
+	        {
 	          className: 'video-react-video',
 	          ref: function ref(c) {
 	            _this4.video = c;
@@ -2554,7 +2552,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          onTimeUpdate: this.handleTimeUpdate,
 	          onRateChange: this.handleRateChange,
 	          onVolumeChange: this.handleVolumeChange
-	        }, 'playsInline', true),
+	        },
 	        this.renderChildren()
 	      );
 	    }
