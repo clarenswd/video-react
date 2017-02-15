@@ -542,6 +542,7 @@ export default class Video extends Component {
         onTimeUpdate={this.handleTimeUpdate}
         onRateChange={this.handleRateChange}
         onVolumeChange={this.handleVolumeChange}
+        playsInline
       >
         {this.renderChildren()}
       </video>

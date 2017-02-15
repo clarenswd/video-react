@@ -50,6 +50,5 @@ build
 .DS_Store
 .env
 npm-debug.log
-/lib
-dist
+/libdist
 build
