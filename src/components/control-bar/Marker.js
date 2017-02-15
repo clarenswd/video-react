@@ -23,8 +23,11 @@ class Marker extends Component {
 		      backgroundColor: 'red',
 		      width:'10px',
 		      height:'10px',
+		      borderRadius:'50%',
 		      position:'absolute',
+		      top:'-4px',
 		      left: this.state.offset+'%', 
+	          zIndex: "999999",
 	    };
 		return (<div className="clarensMarker" style={style} onClick={this.props.toggleChat}></div>);
 
