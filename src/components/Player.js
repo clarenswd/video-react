@@ -59,7 +59,7 @@ const propTypes = {
   onRateChange: PropTypes.func,
   onVolumeChange: PropTypes.func,
 
-
+  markerClick: PropTypes.func
 };
 
 const defaultProps = {
@@ -70,7 +70,10 @@ const defaultProps = {
     {seconds:9, duration:52 , topic : "sensors"},
     {seconds:13, duration:52, topic : "music"},
     {seconds:45, duration:52, topic : "comfort"},
-  ]
+  ], 
+  markerClick: function(){
+    console.log('Default ToggleChatEvent, should Be called');
+  }
 
 };
 

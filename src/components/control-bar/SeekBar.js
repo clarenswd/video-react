@@ -11,7 +11,8 @@ const propTypes = {
   player: PropTypes.object,
   mouseTime: PropTypes.object,
   actions: PropTypes.object,
-  markers: PropTypes.array
+  markers: PropTypes.array, 
+  markerClick: PropTypes.func
 };
 
 export default class SeekBar extends Component {
@@ -27,10 +28,6 @@ export default class SeekBar extends Component {
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
-
-
-    this.toggleChat = this.toggleChat.bind(this);
-
   }
 
   componentDidMount() {
@@ -94,10 +91,7 @@ export default class SeekBar extends Component {
     const { actions } = this.props;
     actions.replay(5);
   }
-  toggleChat(){
-    alert("toggleChat");
 
-  }
 
   render() {
     let react_this  = this;
@@ -105,11 +99,10 @@ export default class SeekBar extends Component {
     const time = seekingTime || currentTime;
 
     let markers = this.props.markers;
-
     const markerComponents =[];
      
     markers.forEach(function (marker, i ) {
-      markerComponents.push(<Marker key={i} seconds={marker.seconds} videoDuration = { marker.duration } toggleChat={ react_this.toggleChat}/>);
+      markerComponents.push(<Marker key={i} seconds={marker.seconds} videoDuration = { marker.duration } markerClick={ this.props.markerClick}/>);
     });
      
 

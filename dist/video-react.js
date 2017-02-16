@@ -3614,7 +3614,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  player: _react.PropTypes.object,
 	  mouseTime: _react.PropTypes.object,
 	  actions: _react.PropTypes.object,
-	  markers: _react.PropTypes.array
+	  markers: _react.PropTypes.array,
+	  markerClick: _react.PropTypes.func
 	};
 	
 	var SeekBar = function (_Component) {
@@ -3633,9 +3634,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _this.handleMouseDown = _this.handleMouseDown.bind(_this);
 	    _this.handleMouseMove = _this.handleMouseMove.bind(_this);
 	    _this.handleMouseUp = _this.handleMouseUp.bind(_this);
-	
-	    _this.toggleChat = _this.toggleChat.bind(_this);
-	
 	    return _this;
 	  }
 	
@@ -3722,11 +3720,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      actions.replay(5);
 	    }
 	  }, {
-	    key: 'toggleChat',
-	    value: function toggleChat() {
-	      alert("toggleChat");
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
@@ -3743,11 +3736,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var time = seekingTime || currentTime;
 	
 	      var markers = this.props.markers;
-	
 	      var markerComponents = [];
 	
 	      markers.forEach(function (marker, i) {
-	        markerComponents.push(_react2.default.createElement(_Marker2.default, { key: i, seconds: marker.seconds, videoDuration: marker.duration, toggleChat: react_this.toggleChat }));
+	        markerComponents.push(_react2.default.createElement(_Marker2.default, { key: i, seconds: marker.seconds, videoDuration: marker.duration, markerClick: this.props.markerClick }));
 	      });
 	
 	      return _react2.default.createElement(
@@ -4929,14 +4921,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onLoadedData: _react.PropTypes.func,
 	  onTimeUpdate: _react.PropTypes.func,
 	  onRateChange: _react.PropTypes.func,
-	  onVolumeChange: _react.PropTypes.func
+	  onVolumeChange: _react.PropTypes.func,
 	
+	  markerClick: _react.PropTypes.func
 	};
 	
 	var defaultProps = {
 	  fluid: true,
 	  aspectRatio: 'auto',
-	  markers: [{ seconds: 3, duration: 52, topic: "autopilot" }, { seconds: 9, duration: 52, topic: "sensors" }, { seconds: 13, duration: 52, topic: "music" }, { seconds: 45, duration: 52, topic: "comfort" }]
+	  markers: [{ seconds: 3, duration: 52, topic: "autopilot" }, { seconds: 9, duration: 52, topic: "sensors" }, { seconds: 13, duration: 52, topic: "music" }, { seconds: 45, duration: 52, topic: "comfort" }],
+	  markerClick: function markerClick() {
+	    console.log('Default ToggleChatEvent, should Be called');
+	  }
 	
 	};
 	
@@ -5390,7 +5386,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		_createClass(Marker, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-	
 				var offset = this.props.seconds / this.props.videoDuration;
 				this.setState({ offset: offset * 100 });
 				console.log(this.props.seconds);
@@ -5411,7 +5406,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					left: this.state.offset + '%',
 					zIndex: "999999"
 				};
-				return _react2.default.createElement('div', { className: 'clarensMarker', style: style, onClick: this.props.toggleChat });
+				return _react2.default.createElement('div', { className: 'clarensMarker', style: style, onClick: this.props.markerClick });
 			}
 		}]);
 	
