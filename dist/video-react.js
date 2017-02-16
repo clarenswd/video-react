@@ -3738,9 +3738,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var markers = this.props.markers;
 	      var markerComponents = [];
 	
-	      markers.forEach(function (marker, i) {
-	        markerComponents.push(_react2.default.createElement(_Marker2.default, { key: i, seconds: marker.seconds, videoDuration: marker.duration, markerClick: react_this.props.markerClick }));
-	      });
+	      markers.map(function (marker, i) {
+	        markerComponents.push(_react2.default.createElement(_Marker2.default, { key: i, seconds: marker.seconds, trigger: marker.topic, videoDuration: marker.duration, markerClick: this.props.markerClick }));
+	      }, this);
 	
 	      return _react2.default.createElement(
 	        _Slider2.default,
@@ -4930,8 +4930,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  fluid: true,
 	  aspectRatio: 'auto',
 	  markers: [{ seconds: 3, duration: 52, topic: "autopilot" }, { seconds: 9, duration: 52, topic: "sensors" }, { seconds: 13, duration: 52, topic: "music" }, { seconds: 45, duration: 52, topic: "comfort" }],
-	  markerClick: function markerClick() {
-	    console.log('Default ToggleChatEvent, should Be called');
+	  markerClick: function markerClick(zzz) {
+	
+	    console.log("default markerClick from Player.JS, it will return the props for the clicked marker.");
+	    console.log(zzz);
 	  }
 	
 	};
@@ -5381,17 +5383,23 @@ return /******/ (function(modules) { // webpackBootstrap
 			_this.state = {
 				offset: 0
 			};
+	
+			_this.returnMe = _this.returnMe.bind(_this);
 			return _this;
 		}
 	
 		_createClass(Marker, [{
+			key: 'returnMe',
+			value: function returnMe() {
+	
+				// console.log("Excutes this.props.MarkerClick and return the props");
+				this.props.markerClick(this.props);
+			}
+		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				var offset = this.props.seconds / this.props.videoDuration;
 				this.setState({ offset: offset * 100 });
-				console.log(this.props.seconds);
-				console.log(this.props.videoDuration);
-				console.log(this.state.offset);
 			}
 		}, {
 			key: 'render',
@@ -5407,7 +5415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					left: this.state.offset + '%',
 					zIndex: "999999"
 				};
-				return _react2.default.createElement('div', { className: 'clarensMarker', style: style, onClick: this.props.markerClick });
+				return _react2.default.createElement('div', { className: 'clarensMarker', style: style, onClick: this.returnMe });
 			}
 		}]);
 	
