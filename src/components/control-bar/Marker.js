@@ -7,14 +7,17 @@ class Marker extends Component {
 		this.state ={
 			offset : 0,
 		}
-	}
 
+		this.returnMe = this.returnMe.bind(this);
+	}
+	returnMe(){
+		 
+		// console.log("Excutes this.props.MarkerClick and return the props");
+		this.props.markerClick(this.props);
+	}
 	componentDidMount() {
 		var offset = (this.props.seconds / this.props.videoDuration)
 	  	this.setState({ offset: offset * 100 });
-	  	console.log(this.props.seconds);
-	  	console.log(this.props.videoDuration);
-	  	console.log(this.state.offset);
 	}
 	render(){
 
@@ -28,7 +31,7 @@ class Marker extends Component {
 		      left: this.state.offset+'%', 
 	          zIndex: "999999",
 	    };
-		return (<div className="clarensMarker" style={style} onClick={this.props.markerClick}></div>);
+		return (<div className="clarensMarker" style={style} onClick={this.returnMe} ></div>);
 
 	}
 }

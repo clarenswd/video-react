@@ -71,8 +71,10 @@ const defaultProps = {
     {seconds:13, duration:52, topic : "music"},
     {seconds:45, duration:52, topic : "comfort"},
   ], 
-  markerClick: function(){
-    console.log('Default ToggleChatEvent, should Be called');
+  markerClick: function(zzz){
+
+    console.log("default markerClick from Player.JS, it will return the props for the clicked marker.");
+    console.log(zzz);
   }
 
 };
