@@ -102,7 +102,7 @@ export default class SeekBar extends Component {
     const markerComponents =[];
      
     markers.forEach(function (marker, i ) {
-      markerComponents.push(<Marker key={i} seconds={marker.seconds} videoDuration = { marker.duration } markerClick={ this.props.markerClick}/>);
+      markerComponents.push(<Marker key={i} seconds={marker.seconds} videoDuration = { marker.duration } markerClick={ react_this.props.markerClick }/>);
     });
      
 

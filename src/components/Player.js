@@ -402,6 +402,7 @@ export default class Player extends Component {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         tabIndex="-1"
+         
       >
         {children}
       </div>

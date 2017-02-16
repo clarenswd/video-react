@@ -3739,7 +3739,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var markerComponents = [];
 	
 	      markers.forEach(function (marker, i) {
-	        markerComponents.push(_react2.default.createElement(_Marker2.default, { key: i, seconds: marker.seconds, videoDuration: marker.duration, markerClick: this.props.markerClick }));
+	        markerComponents.push(_react2.default.createElement(_Marker2.default, { key: i, seconds: marker.seconds, videoDuration: marker.duration, markerClick: react_this.props.markerClick }));
 	      });
 	
 	      return _react2.default.createElement(
@@ -5286,6 +5286,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          onFocus: this.handleFocus,
 	          onBlur: this.handleBlur,
 	          tabIndex: '-1'
+	
 	        },
 	        children
 	      );
